@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fredentini's — Boxing Day 2025</title>
+  <style>
+/* Cipriani-inspired, Bootstrap-ish minimal system
+   Notes: warm brown typography, generous whitespace, clean buttons. */
+
+/* -----------------------------
+   Tokens
+------------------------------ */
+:root{
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --text: #54362c;         /* warm brown used repeatedly */
+  --muted: rgba(84,54,44,.70);
+  --line: rgba(84,54,44,.18);
+
+  --accent: #0b0b0b;       /* crisp black for links/controls */
+  --accent-2: #54362c;
+
+  --radius: 6px;
+  --radius-lg: 10px;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 10px 24px rgba(0,0,0,.08);
+
+  --container-max: 1100px;
+
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+
+  --font-sans: futura, "Futura PT", "Futura", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-ui: "DIN Next", "DIN", "Helvetica Neue", Arial, sans-serif;
+
+  --h1: clamp(2rem, 3.2vw, 2.8rem);
+  --h2: clamp(1.5rem, 2.4vw, 2.2rem);
+  --h3: clamp(1.25rem, 1.9vw, 1.6rem);
+  --body: 16px;
+  --small: 12px;
+
+  --ls-tight: .01em;
+  --ls-wide: .14em;
+}
+
+/* -----------------------------
+   Base
+------------------------------ */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-sans);
+  font-size:var(--body);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+img{max-width:100%; height:auto; display:block}
+a{
+  color:var(--accent);
+  text-decoration:none;
+}
+a:hover{opacity:.85}
+hr{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:var(--space-5) 0;
+}
+
+/* Typography */
+h1,h2,h3,h4,h5{
+  margin:0 0 var(--space-3);
+  font-weight:400;
+  letter-spacing:var(--ls-tight);
+  color:var(--text);
+}
+h1{font-size:var(--h1); line-height:1.1}
+h2{font-size:var(--h2); line-height:1.2}
+h3{font-size:var(--h3); line-height:1.3}
+p{margin:0 0 var(--space-3)}
+.small, small{font-size:var(--small); color:var(--muted)}
+.lead{font-size:1.0625rem; color:var(--muted)}
+
+/* Uppercase label style (Cipriani-ish) */
+.kicker{
+  font-family:var(--font-ui);
+  text-transform:uppercase;
+  letter-spacing:var(--ls-wide);
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* -----------------------------
+   Layout (Bootstrap-like)
+------------------------------ */
+.container{
+  width:100%;
+  max-width:var(--container-max);
+  margin:0 auto;
+  padding-left:var(--space-4);
+  padding-right:var(--space-4);
+}
+
+.section{
+  padding:var(--space-6) 0;
+}
+
+.row{
+  display:flex;
+  flex-wrap:wrap;
+  margin-left:-12px;
+  margin-right:-12px;
+}
+.col{
+  flex:1 1 0;
+  padding-left:12px;
+  padding-right:12px;
+  min-width:0;
+}
+.col-6{flex:0 0 50%}
+.col-4{flex:0 0 33.333%}
+.col-3{flex:0 0 25%}
+@media (max-width: 860px){
+  .col-6,.col-4,.col-3{flex:0 0 100%}
+}
+
+/* -----------------------------
+   Cards / Surfaces
+------------------------------ */
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-sm);
+  overflow:hidden;
+}
+.card-body{padding:var(--space-4)}
+.card-title{margin-bottom:var(--space-2)}
+.card-subtitle{margin-top:-.25rem; margin-bottom:var(--space-3); color:var(--muted)}
+
+/* Minimal image frame */
+.frame{
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+
+/* -----------------------------
+   Nav
+------------------------------ */
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--space-4);
+  padding:var(--space-3) 0;
+  border-bottom:1px solid var(--line);
+}
+.nav-brand{
+  font-family:var(--font-ui);
+  text-transform:uppercase;
+  letter-spacing:var(--ls-wide);
+  font-size:13px;
+  color:var(--text);
+}
+.nav-links{
+  display:flex;
+  gap:var(--space-4);
+  align-items:center;
+}
+.nav a{
+  font-family:var(--font-ui);
+  text-transform:uppercase;
+  letter-spacing:var(--ls-wide);
+  font-size:12px;
+  color:var(--accent);
+}
+
+/* -----------------------------
+   Buttons
+------------------------------ */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5rem;
+
+  padding:.85rem 1.1rem;
+  border-radius:999px;
+
+  border:1px solid var(--accent);
+  background:transparent;
+  color:var(--accent);
+
+  font-family:var(--font-ui);
+  text-transform:uppercase;
+  letter-spacing:var(--ls-wide);
+  font-size:12px;
+
+  cursor:pointer;
+  transition:transform .12s ease, opacity .12s ease, background .12s ease, color .12s ease;
+}
+.btn:hover{opacity:.9}
+.btn:active{transform:translateY(1px)}
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+}
+.btn-primary:hover{background:#111}
+.btn-soft{
+  border-color:var(--line);
+  color:var(--text);
+}
+.btn-soft:hover{background:rgba(84,54,44,.04)}
+
+/* Link button */
+.btn-link{
+  border:0;
+  padding:0;
+  border-radius:0;
+  text-transform:none;
+  letter-spacing:0;
+  font-family:inherit;
+  color:var(--accent);
+  background:transparent;
+}
+
+/* -----------------------------
+   Forms
+------------------------------ */
+label{
+  display:block;
+  margin-bottom:var(--space-2);
+  font-family:var(--font-ui);
+  text-transform:uppercase;
+  letter-spacing:var(--ls-wide);
+  font-size:11px;
+  color:var(--muted);
+}
+.form-control{
+  width:100%;
+  padding:.9rem 1rem;
+  border-radius:var(--radius);
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--text);
+  outline:none;
+  transition:border-color .12s ease, box-shadow .12s ease;
+}
+.form-control:focus{
+  border-color:rgba(0,0,0,.55);
+  box-shadow:0 0 0 4px rgba(0,0,0,.06);
+}
+.form-group{margin-bottom:var(--space-4)}
+
+/* -----------------------------
+   Tables (clean, understated)
+------------------------------ */
+.table{
+  width:100%;
+  border-collapse:collapse;
+}
+.table th,
+.table td{
+  padding:1rem 0;
+  border-bottom:1px solid var(--line);
+  vertical-align:top;
+}
+.table th{
+  text-align:left;
+  font-family:var(--font-ui);
+  text-transform:uppercase;
+  letter-spacing:var(--ls-wide);
+  font-size:11px;
+  color:var(--muted);
+}
+
+/* -----------------------------
+   Utilities (Bootstrap-ish)
+------------------------------ */
+.text-center{text-align:center}
+.text-right{text-align:right}
+.m-0{margin:0}
+.mt-3{margin-top:var(--space-3)}
+.mt-4{margin-top:var(--space-4)}
+.mt-5{margin-top:var(--space-5)}
+.mb-3{margin-bottom:var(--space-3)}
+.mb-4{margin-bottom:var(--space-4)}
+.mb-5{margin-bottom:var(--space-5)}
+.py-5{padding-top:var(--space-5); padding-bottom:var(--space-5)}
+.py-6{padding-top:var(--space-6); padding-bottom:var(--space-6)}
+.d-flex{display:flex}
+.align-center{align-items:center}
+.justify-between{justify-content:space-between}
+.gap-3{gap:var(--space-3)}
+.gap-4{gap:var(--space-4)}
+.border-top{border-top:1px solid var(--line)}
+.border-bottom{border-bottom:1px solid var(--line)}
+.rounded{border-radius:var(--radius)}
+.rounded-lg{border-radius:var(--radius-lg)}
+.shadow-sm{box-shadow:var(--shadow-sm)}
+.shadow-md{box-shadow:var(--shadow-md)}
+.muted{color:var(--muted)}
+
+/* Custom additions for hero */
+.hero{
+  min-height:70vh;
+  display:flex;
+  align-items:center;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-brand">Fredentini's</div>
+      <div class="nav-links">
+        <a href="#invitation">Invitation</a>
+        <a href="#menu">Menu</a>
+        <a href="#location">Location</a>
+        <a href="#rsvp">RSVP</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero / Invitation -->
+  <section id="invitation" class="hero">
+    <div class="container text-center">
+      <h1 style="font-size: clamp(2.5rem, 4vw, 3.5rem); margin-bottom: var(--space-4);">FREDENTINI'S</h1>
+      <div class="kicker mb-4">London</div>
+      
+      <div style="max-width: 600px; margin: 0 auto;">
+        <p style="font-style: italic; font-size: 1.125rem; margin-bottom: var(--space-5);">Dear Guest</p>
+        
+        <p style="font-size: 1.0625rem; line-height: 1.8;">Master Chef Fredricko Owusocucci & Master Sommelier Valentini Eluwaotoni request the pleasure of your company for an exclusive inaugural dinner</p>
+        
+        <hr style="margin: var(--space-5) auto; max-width: 120px;">
+        
+        <div class="kicker mb-2">Boxing Day</div>
+        <p style="font-size: 1.25rem; margin-bottom: var(--space-2);">Friday, 26th December 2025</p>
+        <p style="font-size: 1.25rem; color: var(--accent);">8:00 PM</p>
+      </div>
+      
+      <div class="mt-5">
+        <a href="#menu" class="btn btn-primary">View Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the Evening -->
+  <section class="section border-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="kicker mb-3">The Vision</div>
+          <h2>Where brutalist architecture meets culinary excellence</h2>
+        </div>
+        <div class="col-6">
+          <p>Fredentini's represents the culmination of two extraordinary careers converging in London's most unexpected setting. Master Chef Fredricko Owusocucci, classically trained with celebrated tenures in Germany's most prestigious kitchens and Italy's revered establishments, has chosen the striking brutalist architecture of Irwell Estate as the home for his debut restaurant.</p>
+          <p>In partnership with Master Sommelier Valentini Eluwaotoni, whose impeccable palate and curated wine selections have graced Europe's finest tables, they present an intimate 5-star Michelin-aspiring dining experience. This is not merely a restaurant—it is a statement. A bold reimagining of what fine dining can be when stripped of pretense and returned to its essence: exceptional food, thoughtfully paired wines, and genuine hospitality.</p>
+          <p>The space itself—raw concrete, angular lines, and uncompromising modernist design—provides the perfect canvas for their culinary vision. Here, in this architectural masterpiece, every detail has been considered, from the carefully sourced ingredients to the precisely calibrated lighting that transforms throughout the evening.</p>
+          <p class="small mt-4" style="color: var(--muted); font-style: italic;">Guests are warmly encouraged to bring a dish of personal significance—a homemade creation that speaks to your own culinary journey. This intimate exchange honors the communal spirit of great cooking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="section border-top">
+    <div class="container">
+      <div class="kicker mb-3 text-center">This Evening's</div>
+      <h2 class="mb-5 text-center">Menu</h2>
+      
+      <div style="max-width: 700px; margin: 0 auto;">
+        
+        <!-- Aperitivo -->
+        <div class="mb-5">
+          <div class="kicker mb-3">Aperitivo</div>
+          <div class="d-flex justify-between align-center mb-2">
+            <h3 style="margin: 0;">Bellini</h3>
+          </div>
+          <p class="small">White Peach, Prosecco</p>
+        </div>
+
+        <hr>
+
+        <!-- Antipasti -->
+        <div class="mb-5">
+          <div class="kicker mb-3">Antipasti</div>
+          
+          <div class="mb-4">
+            <h3 style="margin-bottom: var(--space-2);">Beef Carpaccio</h3>
+            <p class="small">Mustard Sauce, Arugula, Parmigiano</p>
+          </div>
+          
+          <div>
+            <h3 style="margin-bottom: var(--space-2);">Pan con Tomato</h3>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Primi -->
+        <div class="mb-5">
+          <div class="kicker mb-3">Primi</div>
+          <div>
+            <h3 style="margin-bottom: var(--space-2);">Tagliolini Gratinati</h3>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Secondi -->
+        <div class="mb-5">
+          <div class="kicker mb-3">Secondi</div>
+          <div>
+            <h3 style="margin-bottom: var(--space-2);">Veal Milanese</h3>
+            <p class="small">Arugula, Cherry Tomatoes</p>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Contorni -->
+        <div class="mb-5">
+          <div class="kicker mb-3">Contorni</div>
+          <div>
+            <h3 style="margin-bottom: var(--space-2);">Parmigiana</h3>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Dolci -->
+        <div class="mb-5">
+          <div class="kicker mb-3">Dolci</div>
+          
+          <div class="mb-3">
+            <h3 style="margin-bottom: var(--space-2);">Tiramisu</h3>
+          </div>
+          
+          <div>
+            <h3 style="margin-bottom: var(--space-2);">Basque Cheesecake</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- The Founders Section -->
+  <section class="section border-top">
+    <div class="container">
+      <div class="kicker mb-3 text-center">The Founders</div>
+      <h2 class="mb-5 text-center">Culinary Excellence Meets Architectural Vision</h2>
+      
+      <div class="row">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="kicker mb-3">Master Chef</div>
+              <h3 class="card-title">Fredricko Owusocucci</h3>
+              <p>Chef Fredricko's journey through Europe's most demanding kitchens has shaped his philosophy of precision and passion. Following rigorous classical training in Germany's Michelin-starred establishments and transformative years in Italy's revered family trattorias, he has developed a singular approach that honors tradition while embracing innovation.</p>
+              <p class="small mt-3">His cuisine speaks a universal language—refined technique married to bold flavor, where every ingredient is treated with reverence and every plate tells a story.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="kicker mb-3">Master Sommelier</div>
+              <h3 class="card-title">Valentini Eluwaotoni</h3>
+              <p>Sommelier Valentini brings an encyclopedic knowledge of viticulture and an innate understanding of how wine elevates cuisine. His palate, honed across Europe's most distinguished cellars and vineyard estates, identifies not merely varietals but stories—the terroir, the vintage, the winemaker's vision.</p>
+              <p class="small mt-3">At Fredentini's, his carefully curated selections create symphonic pairings that transform each course into an unforgettable sensory journey.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section id="location" class="section border-top">
+    <div class="container">
+      <div class="kicker mb-3 text-center">How to Find Us</div>
+      <h2 class="mb-5 text-center">Location</h2>
+      
+      <div class="row">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="kicker mb-3">Address</div>
+              <p style="font-size: 1.125rem; line-height: 1.6; margin: 0;">
+                61 Irwell Estate<br>
+                Neptune Street<br>
+                Rotherhithe, London<br>
+                SE16 7JS
+              </p>
+              <p class="small mt-4" style="font-style: italic; color: var(--muted);">A brutalist architectural landmark in London's Rotherhithe quarter</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="kicker mb-3">Directions</div>
+              
+              <div class="mb-4">
+                <p class="small" style="font-weight: 500; margin-bottom: var(--space-1);">By Underground</p>
+                <p class="small" style="margin: 0;">Rotherhithe Station (London Overground) – 8 minute walk<br>
+                Canada Water Station (Jubilee Line / London Overground) – 12 minute walk</p>
+              </div>
+              
+              <div class="mb-4">
+                <p class="small" style="font-weight: 500; margin-bottom: var(--space-1);">By Bus</p>
+                <p class="small" style="margin: 0;">Routes 381, C10 to Rotherhithe Station or Surrey Quays</p>
+              </div>
+              
+              <div class="mb-4">
+                <p class="small" style="font-weight: 500; margin-bottom: var(--space-1);">By Car</p>
+                <p class="small" style="margin: 0;">Limited street parking available on Irwell Estate and surrounding roads.<br>
+                Nearest car park: Decathlon Surrey Quays (10 minute walk)</p>
+              </div>
+              
+              <div>
+                <p class="small" style="font-weight: 500; margin-bottom: var(--space-1);">By River</p>
+                <p class="small" style="margin: 0;">For the discerning: Thames Clipper to Canada Water Pier (15 minute walk)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 text-center">
+        <p class="small muted">Detailed arrival instructions will be shared upon confirmation</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dress Code & Details -->
+  <section class="section border-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div class="text-center">
+            <div class="kicker mb-3">Dress Code</div>
+            <p style="font-size: 1.125rem;">Sexy and Smart</p>
+            <p class="small">Elegance with edge. Dress to impress in an atmosphere where style and substance converge</p>
+          </div>
+        </div>
+        
+        <div class="col-4">
+          <div class="text-center">
+            <div class="kicker mb-3">Arrival</div>
+            <p style="font-size: 1.125rem;">8:00 PM Sharp</p>
+            <p class="small">Aperitivo service commences promptly. The tasting menu begins at 8:30 PM</p>
+          </div>
+        </div>
+        
+        <div class="col-4">
+          <div class="text-center">
+            <div class="kicker mb-3">Culinary Contributions</div>
+            <p style="font-size: 1.125rem;">Welcome & Celebrated</p>
+            <p class="small">Please bring a homemade dish—your personal culinary signature. Dietary requirements accommodated with notice</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP Section -->
+  <section id="rsvp" class="section border-top">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="kicker mb-3">Kindly Respond By</div>
+        <p style="font-size: 1.25rem;">Friday, 20th December 2025</p>
+        <p class="small mt-2 muted">Seating is intentionally limited to ensure an intimate experience</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body text-center">
+              <div class="kicker mb-3">Contact Fredentini's</div>
+              <p class="mb-4">Chef Fredricko & Sommelier Valentini await your response</p>
+              <a href="mailto:reservations@fredentinis.com" class="btn btn-primary" style="margin-bottom: var(--space-2);">Confirm Your Place</a>
+              <p class="small mt-3">Direct inquiries welcomed for special requests or questions</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6">
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" class="form-control" placeholder="Full name">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" placeholder="your.email@example.com">
+            </div>
+            
+            <div class="form-group">
+              <label for="attending">Attendance</label>
+              <select id="attending" class="form-control">
+                <option>Honored to attend</option>
+                <option>Unable to attend</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="dietary">Dietary Requirements & Homemade Dish (Optional)</label>
+              <textarea id="dietary" class="form-control" rows="3" placeholder="Please share any dietary restrictions and what homemade dish you'll be bringing..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit Reservation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="section border-top">
+    <div class="container text-center">
+      <div class="kicker mb-3">Fredentini's</div>
+      <p class="small">Established Boxing Day 2025</p>
+      <p class="small mt-3" style="font-style: italic; color: var(--muted);">
+        "Good food is the foundation of genuine happiness"<br>
+        — Auguste Escoffier
+      <
